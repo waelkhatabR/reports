@@ -32,7 +32,7 @@ a{color:inherit}
 .top-in{max-width:1240px;margin:0 auto;padding:10px 16px 0;display:flex;flex-direction:column;gap:8px}
 .brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .brand-l{display:flex;align-items:center;gap:12px}
-.logo{height:44px;width:auto;max-width:150px;object-fit:contain;background:#fff;border-radius:8px;padding:4px 8px}
+.logo{height:58px;width:auto;max-width:150px;object-fit:contain;background:#fff;border-radius:8px;padding:4px 8px}
 .wordmark{height:44px;min-width:44px;padding:0 12px;border-radius:8px;background:#fff;color:var(--brand);display:grid;place-items:center;font-family:var(--font-display);font-weight:700;font-size:18px}
 .brand h1{font-size:18px;color:#fff}
 .brand small{display:block;font-family:var(--font-body);font-weight:400;font-size:12.5px;color:#c8d6e2}
@@ -230,7 +230,7 @@ tfoot td{font-weight:700;background:var(--soft);padding:9px 12px}
 <header class="top">
   <div class="top-in">
     <div class="brand">
-      <div class="brand-l"><span id="brandMark"><span class="wordmark">مناف</span></span><h1>التقارير الأسبوعية للمشاريع<small id="orgLine">قطاع التطوير والاستثمار</small></h1></div>
+      <div class="brand-l"><span id="brandMark"><img class="logo" src="logo.png" alt="مناف"></span><h1>التقارير الأسبوعية للمشاريع<small id="orgLine">قطاع التطوير والاستثمار</small></h1></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div class="conn" id="conn"><i></i><span>جارٍ الاتصال…</span></div><div class="who" id="who"></div></div>
     </div>
     <nav class="tabs" id="tabs" aria-label="المشاريع"></nav>
@@ -243,14 +243,22 @@ tfoot td{font-weight:700;background:var(--soft);padding:9px 12px}
 
 <script>
 const PROJECTS = [
-  { id:'khayal', name:'خيال ووك', title:'بوليفارد خيال ووك', place:'أبها · حي أبو خيال', kind:'وجهة مطاعم ومقاهٍ وترفيه',
-    facts:[['المالك','شركة الخيال المتحدة'],['المسطحات','46,009 م²'],['المقاول','شركة أصول البناء'],['الافتتاح المستهدف','أبريل–مايو 2027']] },
-  { id:'luluah', name:'اللؤلؤة 1', title:'اللؤلؤة 1', place:'صامطة · جازان', kind:'فلل سكنية',
-    facts:[['المالك','صندوق مناف العقاري'],['الفلل','62 فيلا'],['المسطحات','18,786 م²'],['الانتهاء المتوقع','ديسمبر 2027']] },
-  { id:'durrah', name:'الدرة 1', title:'الدرة 1', place:'صبيا · جازان', kind:'فلل سكنية · إسكان تنموي',
-    facts:[['المالك','صندوق مناف العقاري'],['الفلل','93 فيلا'],['المسطحات','28,512 م²'],['الانتهاء المتوقع','ديسمبر 2027']] },
-  { id:'ishbilia', name:'إشبيلية', title:'إشبيلية', place:'المدينة المنورة', kind:'هدم وإعادة تطوير فندقي',
-    facts:[['المالك','شركة إشبيلية لتشغيل الفنادق'],['مساحة البناء','6,670 م²'],['الميزانية المبدئية','34.0 مليون ريال'],['التسليم المستهدف','نوفمبر 2027']] }
+  { id:"khayal", name:"خيال ووك", title:"بوليفارد خيال ووك", place:"أبها · حي أبو خيال", kind:"وجهة مطاعم ومقاهٍ وترفيه",
+    facts:[["المالك", "شركة الخيال المتحدة"], ["المسطحات", "46,009 م²"], ["المقاول", "شركة أصول البناء"], ["الافتتاح المتوقع", "يوليو 2027"]] },
+  { id:"luluah", name:"اللؤلؤة 1", title:"اللؤلؤة 1", place:"صامطة · جازان", kind:"فلل سكنية",
+    facts:[["المالك", "صندوق مناف العقاري"], ["التوجه المعتمد", "استكمال 38 فيلا وبيع 24 قطعة"], ["المسطحات", "18,786 م²"], ["المقاول", "شركة أصول البناء"], ["الانتهاء المتوقع", "ديسمبر 2027"]] },
+  { id:"durrah", name:"الدرة 1", title:"الدرة 1", place:"صبيا · جازان", kind:"فلل سكنية · إسكان تنموي",
+    facts:[["المالك", "صندوق مناف العقاري"], ["التوجه المعتمد", "استكمال 30 فيلا وبيع 63 قطعة"], ["المسطحات", "28,512 م²"], ["المقاول", "شركة أصول البناء"], ["الانتهاء المتوقع", "ديسمبر 2027"]] },
+  { id:"ishbilia", name:"إشبيلية", title:"إشبيلية", place:"المدينة المنورة · طريق عثمان بن عفان", kind:"هدم وإعادة تطوير فندقي",
+    facts:[["المالك", "شركة إشبيلية لتشغيل الفنادق"], ["مساحة البناء", "6,670 م²"], ["الميزانية المبدئية", "34.0 مليون ريال"], ["التسليم المستهدف", "نوفمبر 2027"]] },
+  { id:"masa", name:"برج الماسة", title:"برج الماسة", place:"جدة · الكورنيش", kind:"برج متعدد الأدوار · دراسة وتقييم",
+    facts:[["الرخصة", "93 دوراً"], ["الوضع الحالي", "هيكل خرساني حتى الدور 19"], ["المساحة المنفذة", "33,328 م²"], ["المساحة المتوقعة", "نحو 147,818 م²"], ["دور مناف", "دراسة وتقييم"]] },
+  { id:"abukhayal", name:"منتجع أبو خيال", title:"منتجع أبو خيال", place:"أبها · أبو خيال", kind:"منتجع سياحي وتطوير موقع تراثي",
+    facts:[["مساحة الأرض", "63,409 م²"], ["المخطط العام", "BIG"], ["التصميم المعماري", "مرسم44"], ["حزمة التقديم للوزارة", "05/02/2027 (برنامج 120 يوماً)"]] },
+  { id:"westin", name:"ويستن أبها", title:"منتجع ويستن أبها السياحي", place:"أبها · منطقة عسير", kind:"منتجع سياحي: فندق ونادٍ وقاعة مناسبات ومسجد ووحدات إقامة",
+    facts:[["المالك", "شركة منارات الضيافة"], ["المشغل", "ماريوت (ويستن)"], ["المقاول", "تحالف شركة المدور وشركة أصول البناء"], ["دور مناف", "ممثل المالك في التطوير والتصميم"]] },
+  { id:"madinah200", name:"فندق القطعة 200", title:"فندق المدينة المنورة · القطعة 200", place:"المدينة المنورة · المنطقة المركزية الشمالية", kind:"فندق",
+    facts:[["المالك", "شركة سقيفة الضيافة (حق انتفاع)"], ["المشغل", "سنود"], ["مساحة الأرض", "862.54 م²"], ["الارتفاع", "3 بدروم + أرضي + ميزانين + أول + 14 متكرر"], ["المواقف", "آلية"]] }
 ];
 const STATUS = [['وفق الخطة','good','#22764a'],['تحت المراقبة','warn','#d39a2c'],['حرج','crit','#b0261d'],['بانتظار قرار','wait','#5f3a99']];
 const statusCls = v => (STATUS.find(s=>s[0]===v)||[])[1] || '';
@@ -263,7 +271,7 @@ const TABLES = {
 };
 const SUMMARY_FIELDS = [['rep_no','رقم التقرير','text'],['rep_from','الفترة: من','date'],['rep_to','الفترة: إلى','date'],['rep_pm','مدير المشروع','text'],['rep_date','تاريخ الإصدار','date'],['rep_status','الحالة العامة','sel:'+STATUS.map(s=>s[0]).join('|')]];
 
-let me='', canWrite=true, version=null, inflight=0, loaded=false, brand={org:'مناف', logo:''};
+let me='', canWrite=true, version=null, inflight=0, loaded=false, brand={org:'مناف', logo:'logo.png'};
 const docs={}, archIndex={}, drafts={};
 const view = {archive:null, confirmClose:null, filter:'all', sort:'dev', decSort:'due'};
 const AUTH_KEY='manafReportAuth';
@@ -411,7 +419,7 @@ function renderDashboard(){
   const stackTotal = all.length;
   return `
   <div class="page-h">
-    <div><h2>لوحة متابعة المشاريع</h2><p>الصورة الحالية لأربعة مشاريع · ${esc(fmtD.format(new Date()))}</p></div>
+    <div><h2>لوحة متابعة المشاريع</h2><p>الصورة الحالية لـ${all.length} مشاريع · ${esc(fmtD.format(new Date()))}</p></div>
     <div class="actions">${printBtn('dashboard','طباعة اللوحة')}${printBtn('all','طباعة كل التقارير')}</div>
   </div>
   <div class="kpis">
@@ -642,7 +650,7 @@ async function start(){
 }
 (async function boot(){
   
-  try{ const b=await rawCall('getBrand'); if(b){ brand=b; $('#orgLine').textContent=(b.org||'مناف')+' · قطاع التطوير والاستثمار'; $('#brandMark').innerHTML = b.logo ? `<img class="logo" src="${b.logo}" alt="${esc(b.org)}">` : `<span class="wordmark">${esc(b.org||'مناف')}</span>`; } }catch(_){}
+  try{ const b=await rawCall('getBrand'); if(b){ brand=Object.assign(b,{logo:b.logo||'logo.png'}); $('#orgLine').textContent=(b.org||'مناف')+' · قطاع التطوير والاستثمار'; $('#brandMark').innerHTML = b.logo ? `<img class="logo" src="${b.logo}" alt="${esc(b.org)}">` : `<span class="wordmark">${esc(b.org||'مناف')}</span>`; } }catch(_){}
   setConn('live','متصل');
   if(!auth){ showLogin(''); return; }
   showWho(); start();
